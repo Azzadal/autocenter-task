@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - objectQuotingStrategy: QUOTE_ALL_OBJECTS
+  - changeSet:
+      id: schema/_/table
+      author: kvasov_andrey
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: ANALYSIS_OBJECTPK
+                  name: ID
+                  type: BIGINT
+              - column:
+                  name: NAME
+                  type: VARCHAR(128)
+              - column:
+                  name: CATALOG_RECORD_TYPE_ID
+                  type: BIGINT
+            tableName: ANALYSIS_OBJECT
