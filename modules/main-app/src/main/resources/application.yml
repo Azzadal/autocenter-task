@@ -22,3 +22,6 @@ spring:
 hibernate:
   jdbc:
     time_zone: UTC
+jwt:
+  secret: very-very-secret-string
+  expiration: 86400

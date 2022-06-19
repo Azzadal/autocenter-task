@@ -1,7 +1,7 @@
 databaseChangeLog:
   - objectQuotingStrategy: QUOTE_ALL_OBJECTS
   - changeSet:
-      id: schema/_/table
+      id: schema/user/table
       author: kvasov_andrey
       changes:
         - createTable:
@@ -11,13 +11,155 @@ databaseChangeLog:
                   constraints:
                     nullable: false
                     primaryKey: true
-                    primaryKeyName: ANALYSIS_OBJECTPK
-                  name: ID
+                    primaryKeyName: USERPK
+                  name: id
                   type: BIGINT
               - column:
-                  name: NAME
-                  type: VARCHAR(128)
+                  name: login
+                  type: VARCHAR(255)
               - column:
-                  name: CATALOG_RECORD_TYPE_ID
+                  name: password
+                  type: VARCHAR(255)
+              - column:
+                  name: FIO
+                  type: VARCHAR(255)
+              - column:
+                  name: birthday
+                  type: date
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+              - column:
+                  name: address
+                  type: VARCHAR(255)
+              - column:
+                  name: telefon
+                  type: VARCHAR(255)
+              - column:
+                  name: role_id
                   type: BIGINT
-            tableName: ANALYSIS_OBJECT
+            tableName: Usr
+  - changeSet:
+      id: schema/role/table
+      author: kvasov_andrey
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: USER_ROLEPK
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+            tableName: user_role
+  - changeSet:
+      id: schema/car/table
+      author: kvasov_andrey
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: CARPK
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: mark_id
+                  type: VARCHAR(255)
+              - column:
+                  name: model_id
+                  type: VARCHAR(255)
+              - column:
+                  name: color
+                  type: VARCHAR(255)
+              - column:
+                  name: status
+                  type: VARCHAR(255)
+            tableName: Car
+  - changeSet:
+      id: schema/mark/table
+      author: kvasov_andrey
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: MARKPK
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+            tableName: Mark
+  - changeSet:
+      id: schema/model/table
+      author: kvasov_andrey
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: MODELPK
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+            tableName: Model
+############################# связи #############################
+  - changeSet:
+      id: schema/user/foreign-key/fk_user_role_id
+      author: kvasov_andrey
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: role_id
+            baseTableName: Usr
+            constraintName: UR_FK_USER_ROLE_ID
+            deferrable: false
+            initiallyDeferred: false
+            referencedColumnNames: id
+            referencedTableName: user_role
+            validate: true
+            onDelete: cascade
+  - changeSet:
+      id: schema/car/foreign-key/fk_car_mark_id
+      author: kvasov_andrey
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: role_id
+            baseTableName: Car
+            constraintName: CM_FK_CAR_MARK_ID
+            deferrable: false
+            initiallyDeferred: false
+            referencedColumnNames: id
+            referencedTableName: Mark
+            validate: true
+            onDelete: cascade
+  - changeSet:
+      id: schema/car/foreign-key/fk_car_model_id
+      author: kvasov_andrey
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: role_id
+            baseTableName: Car
+            constraintName: CM_FK_CAR_MODEL_ID
+            deferrable: false
+            initiallyDeferred: false
+            referencedColumnNames: id
+            referencedTableName: Model
+            validate: true
+            onDelete: cascade
