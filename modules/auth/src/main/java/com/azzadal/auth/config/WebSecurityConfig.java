@@ -25,11 +25,6 @@ import java.util.Collections;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-//    @Bean
-//    public Logger logger(){
-//        return LoggerFactory.getLogger("application");
-//    }
-
     @Autowired
     private JwtFilter jwtFilter;
 

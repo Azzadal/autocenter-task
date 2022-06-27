@@ -8,8 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 @Configuration
-@ComponentScan
-@Import(com.azzadal.auth.AuthConfigApplication.class)
+@ComponentScan("com.azzadal")
 public class MainConfigApplication {
     @Bean
     public Logger logger(){

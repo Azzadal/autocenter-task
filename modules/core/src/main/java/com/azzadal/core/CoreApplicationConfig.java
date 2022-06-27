@@ -3,9 +3,11 @@ package com.azzadal.core;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
 @ComponentScan
-@EntityScan(basePackages = "com.azzadal.core.car.model")
+@EntityScan
+@EnableJpaRepositories(basePackages = "com.azzadal.core.user.repository")
 public class CoreApplicationConfig {
 }
