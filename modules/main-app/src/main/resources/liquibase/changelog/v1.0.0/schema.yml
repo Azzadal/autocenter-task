@@ -73,10 +73,10 @@ databaseChangeLog:
                   type: BIGINT
               - column:
                   name: mark_id
-                  type: VARCHAR(255)
+                  type: BIGINT
               - column:
                   name: model_id
-                  type: VARCHAR(255)
+                  type: BIGINT
               - column:
                   name: color
                   type: VARCHAR(255)
@@ -140,7 +140,7 @@ databaseChangeLog:
       author: kvasov_andrey
       changes:
         - addForeignKeyConstraint:
-            baseColumnNames: role_id
+            baseColumnNames: mark_id
             baseTableName: Car
             constraintName: CM_FK_CAR_MARK_ID
             deferrable: false
@@ -154,7 +154,7 @@ databaseChangeLog:
       author: kvasov_andrey
       changes:
         - addForeignKeyConstraint:
-            baseColumnNames: role_id
+            baseColumnNames: model_id
             baseTableName: Car
             constraintName: CM_FK_CAR_MODEL_ID
             deferrable: false

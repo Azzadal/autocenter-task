@@ -15,13 +15,15 @@ public class CarController {
     private final CarService carService;
 
     @GetMapping
-    public List<CarResponse> getAll() {
+    public List<CarResponse> getAll()
+    {
+        System.out.println("request...");
         return carService.getAll();
     }
 
     @GetMapping(value = "/{id}")
     public CarResponse getById(@PathVariable Long id) {
-        return carService.getB  yId(id);
+        return carService.getById(id);
     }
 
     @PostMapping
