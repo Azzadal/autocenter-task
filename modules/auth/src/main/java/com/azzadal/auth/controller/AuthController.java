@@ -1,4 +1,4 @@
-package com.azzadal.auth.comtroller;
+package com.azzadal.auth.controller;
 
 import com.azzadal.auth.config.jwt.JwtProvider;
 import com.azzadal.auth.dto.object.AuthRequest;

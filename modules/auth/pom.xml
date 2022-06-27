@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.azzadal.odb</groupId>
+        <groupId>com.azzadal</groupId>
         <artifactId>root</artifactId>
         <version>1.0.0</version>
         <relativePath>../..</relativePath>
@@ -16,8 +16,9 @@
     <name>auth</name>
 
     <dependencies>
+
         <dependency>
-            <groupId>com.azzadal.odb</groupId>
+            <groupId>com.azzadal</groupId>
             <artifactId>core</artifactId>
             <version>1.0.0</version>
             <scope>compile</scope>

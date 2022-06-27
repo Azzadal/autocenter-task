@@ -11,9 +11,71 @@
     <modelVersion>4.0.0</modelVersion>
 
     <version>1.0.0</version>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>LATEST</version>
+        </dependency>
+    </dependencies>
     <name>main-app</name>
     <artifactId>main-app</artifactId>
     <packaging>jar</packaging>
+
+    <plugins>
+        <plugin>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-maven-plugin</artifactId>
+            <configuration>
+                <propertyFileWillOverride>true</propertyFileWillOverride>
+                <propertyFile>target/classes/liquibase/liquibase.yml</propertyFile>
+            </configuration>
+        </plugin>
+
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+        </plugin>
+
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>repackage</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+
+<!--        <plugin>-->
+<!--            <groupId>org.apache.maven.plugins</groupId>-->
+<!--            <artifactId>maven-resources-plugin</artifactId>-->
+<!--            <configuration>-->
+<!--                <encoding>UTF-8</encoding>-->
+<!--            </configuration>-->
+<!--            <executions>-->
+<!--                <execution>-->
+<!--                    <id>copy-resources</id>-->
+<!--                    <phase>compile</phase>-->
+<!--                    <goals>-->
+<!--                        <goal>copy-resources</goal>-->
+<!--                    </goals>-->
+<!--                    <configuration>-->
+<!--                        <outputDirectory>${basedir}/target</outputDirectory>-->
+<!--                        <resources>-->
+<!--                            <resource>-->
+<!--                                <directory>src/main/resources</directory>-->
+<!--                                <include>application-prod.yml</include>-->
+<!--                                <include>logback-spring.xml</include>-->
+<!--                            </resource>-->
+<!--                        </resources>-->
+<!--                    </configuration>-->
+<!--                </execution>-->
+<!--            </executions>-->
+<!--        </plugin>-->
+    </plugins>
 
 
 </project>

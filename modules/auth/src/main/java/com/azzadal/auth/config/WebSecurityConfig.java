@@ -1,6 +1,8 @@
 package com.azzadal.auth.config;
 
 import com.azzadal.auth.config.jwt.JwtFilter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,6 +24,12 @@ import java.util.Collections;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+//    @Bean
+//    public Logger logger(){
+//        return LoggerFactory.getLogger("application");
+//    }
+
     @Autowired
     private JwtFilter jwtFilter;
 
@@ -37,6 +45,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .authorizeRequests()
                     .antMatchers("/admin/*").hasRole("ADMIN")
                     .antMatchers("/register", "/auth").permitAll()
+                    .antMatchers("/core/car/*").permitAll()
                     .antMatchers("/user/*").authenticated()
                 .and()
                     .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);

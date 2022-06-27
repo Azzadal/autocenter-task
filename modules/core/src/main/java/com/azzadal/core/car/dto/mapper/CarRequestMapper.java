@@ -4,7 +4,6 @@ import com.azzadal.core.car.dto.object.CarRequest;
 import com.azzadal.core.car.model.Car;
 import com.azzadal.util.mapper.ToEntityMapper;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 @Mapper
 public interface CarRequestMapper extends ToEntityMapper<Car, CarRequest> {

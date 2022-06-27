@@ -7,9 +7,10 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
         </dependency>
         <dependency>
-            <groupId>com.azzadal.odb</groupId>
+            <groupId>com.azzadal</groupId>
             <artifactId>util</artifactId>
             <version>1.0.0</version>
             <scope>compile</scope>
@@ -18,7 +19,7 @@
 
     <parent>
         <artifactId>root</artifactId>
-        <groupId>com.azzadal.odb</groupId>
+        <groupId>com.azzadal</groupId>
         <version>1.0.0</version>
         <relativePath>../..</relativePath>
     </parent>
