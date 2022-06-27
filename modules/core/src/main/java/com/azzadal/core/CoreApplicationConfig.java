@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @Configuration
 @ComponentScan
 @EntityScan
-@EnableJpaRepositories(basePackages = "com.azzadal.core.user.repository")
+@EnableJpaRepositories
 public class CoreApplicationConfig {
 }

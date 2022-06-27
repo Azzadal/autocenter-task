@@ -6,7 +6,7 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 class BeanViewer {
 
     private final Logger LOG = LoggerFactory.getLogger(getClass());
