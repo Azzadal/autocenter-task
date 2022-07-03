@@ -15,9 +15,7 @@ public class CarController {
     private final CarService carService;
 
     @GetMapping
-    public List<CarResponse> getAll()
-    {
-        System.out.println("request...");
+    public List<CarResponse> getAll(){
         return carService.getAll();
     }
 

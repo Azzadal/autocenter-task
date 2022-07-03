@@ -7,6 +7,7 @@ import com.azzadal.auth.dto.object.RegistrationRequest;
 import com.azzadal.core.user.model.User;
 import com.azzadal.core.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,8 @@ public class AuthController {
     private UserService userService;
     @Autowired
     private JwtProvider jwtProvider;
+    @Autowired
+    private PasswordEncoder encoder;
 
     @PostMapping("/register")
     public String registerUser(@RequestBody @Valid RegistrationRequest registrationRequest) {
@@ -33,6 +36,8 @@ public class AuthController {
 
     @PostMapping
     public AuthResponse auth(@RequestBody AuthRequest request) {
+//        String pass = encoder.encode("admin");
+//        System.out.println(pass);
         User user = userService.findByLoginAndPassword(request.getLogin(), request.getPassword());
         String token = jwtProvider.generateToken(user.getLogin());
         return new AuthResponse(token);

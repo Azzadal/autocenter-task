@@ -1,7 +1,6 @@
 package com.azzadal.auth.config.jwt;
 
 import io.jsonwebtoken.*;
-import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,7 +14,7 @@ import java.util.Date;
 public class JwtProvider {
     @Autowired
     private Logger log;
-    @Value("$(jwt.secret)")
+    @Value("${jwt.secret}")
     private String jwtSecret;
 
     public String generateToken(String login) {

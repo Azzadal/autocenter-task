@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - objectQuotingStrategy: QUOTE_ALL_OBJECTS
+  - changeSet:
+      id: data/role/create-role
+      author: kvasov_andrey
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: ADMIN
+            tableName: user_role

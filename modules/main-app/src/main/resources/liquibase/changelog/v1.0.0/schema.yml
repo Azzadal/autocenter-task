@@ -120,6 +120,33 @@ databaseChangeLog:
                   name: name
                   type: VARCHAR(255)
             tableName: Model
+  - changeSet:
+      id: schema/test-drive-request/table
+      author: kvasov_andrey
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: TEST_DRIVE_PK
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: car_id
+                  type: BIGINT
+              - column:
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  name: testDriveDate
+                  type: DATE
+              - column:
+                  name: connection
+                  type: VARCHAR(255)
+            tableName: Test_drive_request
 ############################# связи #############################
   - changeSet:
       id: schema/user/foreign-key/fk_user_role_id

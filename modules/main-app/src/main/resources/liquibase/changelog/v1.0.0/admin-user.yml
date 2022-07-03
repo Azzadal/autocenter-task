@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - objectQuotingStrategy: QUOTE_ALL_OBJECTS
+  - changeSet:
+      id: data/admin-user
+      author: kvasov_andrey
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: login
+                  value: admin
+              - column:
+                  name: password
+                  value: $2a$10$Nw0PaM8MQeoeJJzs12EODe1HDSFT3A2WZxNGV/.ogw9Yzs9eKFFga # 'admin' BCrypt
+              - column:
+                  name: role_id
+                  valueComputed: (select ur."id" from "user_role" ur where ur."name" = 'ADMIN')
+            tableName: Usr

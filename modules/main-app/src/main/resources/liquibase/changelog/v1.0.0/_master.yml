@@ -3,3 +3,9 @@ databaseChangeLog:
   - include:
       file: schema.yml
       relativeToChangelogFile: true
+  - include:
+      file: role.yml
+      relativeToChangelogFile: true
+  - include:
+      file: admin-user.yml
+      relativeToChangelogFile: true
