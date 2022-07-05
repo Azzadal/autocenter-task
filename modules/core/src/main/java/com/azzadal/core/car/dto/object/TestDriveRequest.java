@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Data
 public class TestDriveRequest {
-    private Car car;
+    private Long car_id;
     private User user;
     private String connection;
     private Date testDriveDate;

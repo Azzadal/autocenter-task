@@ -147,6 +147,51 @@ databaseChangeLog:
                   name: connection
                   type: VARCHAR(255)
             tableName: Test_drive_request
+  - changeSet:
+      id: schema/carsharing-request/table
+      author: kvasov_andrey
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: CARSHARING_PK
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: car_id
+                  type: BIGINT
+              - column:
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  name: connection
+                  type: VARCHAR(255)
+            tableName: Carsharing_request
+  - changeSet:
+      id: schema/trade-in-request/table
+      author: kvasov_andrey
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: TRADE_IN_PK
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  name: connection
+                  type: VARCHAR(255)
+            tableName: Trade_in_request
 ############################# связи #############################
   - changeSet:
       id: schema/user/foreign-key/fk_user_role_id
@@ -188,5 +233,75 @@ databaseChangeLog:
             initiallyDeferred: false
             referencedColumnNames: id
             referencedTableName: Model
+            validate: true
+            onDelete: cascade
+  - changeSet:
+      id: schema/test_drive/foreign-key/fk_car_id
+      author: kvasov_andrey
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: car_id
+            baseTableName: Test_drive_request
+            constraintName: TD_FK_CAR_ID
+            deferrable: false
+            initiallyDeferred: false
+            referencedColumnNames: id
+            referencedTableName: Car
+            validate: true
+            onDelete: cascade
+  - changeSet:
+      id: schema/test_drive/foreign-key/fk_user_id
+      author: kvasov_andrey
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: Test_drive_request
+            constraintName: TD_FK_USER_ID
+            deferrable: false
+            initiallyDeferred: false
+            referencedColumnNames: id
+            referencedTableName: Usr
+            validate: true
+            onDelete: cascade
+  - changeSet:
+      id: schema/trade_in/foreign-key/fk_user_id
+      author: kvasov_andrey
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: Test_drive_request
+            constraintName: TI_FK_USER_ID
+            deferrable: false
+            initiallyDeferred: false
+            referencedColumnNames: id
+            referencedTableName: Usr
+            validate: true
+            onDelete: cascade
+  - changeSet:
+      id: schema/carsharing/foreign-key/fk_user_id
+      author: kvasov_andrey
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: Carsharing_request
+            constraintName: CSH_FK_USER_ID
+            deferrable: false
+            initiallyDeferred: false
+            referencedColumnNames: id
+            referencedTableName: Usr
+            validate: true
+            onDelete: cascade
+  - changeSet:
+      id: schema/carsharing/foreign-key/fk_car_id
+      author: kvasov_andrey
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: car_id
+            baseTableName: Carsharing_request
+            constraintName: CSH_FK_CAR_ID
+            deferrable: false
+            initiallyDeferred: false
+            referencedColumnNames: id
+            referencedTableName: Car
             validate: true
             onDelete: cascade

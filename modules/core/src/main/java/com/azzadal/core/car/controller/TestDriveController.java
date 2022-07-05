@@ -4,9 +4,7 @@ import com.azzadal.core.car.dto.object.TestDriveRequest;
 import com.azzadal.core.car.model.TestDrive;
 import com.azzadal.core.car.service.TestDriveService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/core/test-drive")
@@ -15,7 +13,7 @@ public class TestDriveController {
     private TestDriveService testDriveService;
 
     @PostMapping
-    public TestDrive createRequest(TestDriveRequest request) {
+    public TestDrive createRequest(@RequestBody TestDriveRequest request) {
         return testDriveService.create(request);
     }
 }
