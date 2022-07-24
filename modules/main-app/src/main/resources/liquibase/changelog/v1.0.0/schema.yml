@@ -192,6 +192,30 @@ databaseChangeLog:
                   name: connection
                   type: VARCHAR(255)
             tableName: Trade_in_request
+  - changeSet:
+      id: schema/repair-service-request/table
+      author: kvasov_andrey
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: REPAIR_SERVICE_PK
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  name: auto
+                  type: VARCHAR(255)
+              - column:
+                  name: serviceType
+                  type: VARCHAR(255)
+            tableName: Repair_service
 ############################# связи #############################
   - changeSet:
       id: schema/user/foreign-key/fk_user_role_id
@@ -303,5 +327,19 @@ databaseChangeLog:
             initiallyDeferred: false
             referencedColumnNames: id
             referencedTableName: Car
+            validate: true
+            onDelete: cascade
+  - changeSet:
+      id: schema/repair-service/foreign-key/fk_user_id
+      author: kvasov_andrey
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: Repair_service
+            constraintName: RSR_FK_USER_ID
+            deferrable: false
+            initiallyDeferred: false
+            referencedColumnNames: id
+            referencedTableName: Usr
             validate: true
             onDelete: cascade

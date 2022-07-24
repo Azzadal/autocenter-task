@@ -5,15 +5,15 @@ import lombok.RequiredArgsConstructor;
 
 @Data
 public class CarResponse {
-    Long id;
+    private Long id;
 
-    Mark mark;
+    private Mark mark;
 
-    Model model;
+    private Model model;
 
-    String color;
+    private String color;
 
-    String status;
+    private String status;
 
     @Data
     @RequiredArgsConstructor
