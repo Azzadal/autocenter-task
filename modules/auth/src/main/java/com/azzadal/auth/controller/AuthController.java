@@ -4,6 +4,7 @@ import com.azzadal.auth.config.jwt.JwtProvider;
 import com.azzadal.auth.dto.object.AuthRequest;
 import com.azzadal.auth.dto.object.AuthResponse;
 import com.azzadal.auth.dto.object.RegistrationRequest;
+import com.azzadal.core.user.model.Role;
 import com.azzadal.core.user.model.User;
 import com.azzadal.core.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,7 @@ public class AuthController {
         User u = new User();
         u.setPassword(registrationRequest.getPassword());
         u.setLogin(registrationRequest.getLogin());
+//        u.setRole(new Role());
         userService.saveUser(u);
         return "OK";
     }
