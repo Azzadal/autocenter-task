@@ -6,7 +6,9 @@ import com.azzadal.auth.dto.object.AuthResponse;
 import com.azzadal.auth.dto.object.RegistrationRequest;
 import com.azzadal.core.user.model.Role;
 import com.azzadal.core.user.model.User;
+import com.azzadal.core.user.service.RoleService;
 import com.azzadal.core.user.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,21 +19,20 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping(value = "/auth")
 public class AuthController {
-    @Autowired
-    private UserService userService;
-    @Autowired
-    private JwtProvider jwtProvider;
-    @Autowired
-    private PasswordEncoder encoder;
+    private final UserService userService;
+    private final JwtProvider jwtProvider;
+    private final PasswordEncoder encoder;
+    private final RoleService roleService;
 
     @PostMapping("/register")
     public String registerUser(@RequestBody @Valid RegistrationRequest registrationRequest) {
         User u = new User();
         u.setPassword(registrationRequest.getPassword());
         u.setLogin(registrationRequest.getLogin());
-//        u.setRole(new Role());
+        u.setRole(roleService.getRolebyName("USER"));
         userService.saveUser(u);
         return "OK";
     }

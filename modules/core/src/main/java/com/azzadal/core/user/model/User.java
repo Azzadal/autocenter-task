@@ -15,6 +15,7 @@ import java.util.Date;
 @Entity
 @Table(name = "Usr")
 public class User extends EntityIdentifier {
+    @Column(name = "login", nullable = false)
     private String login;
     private String password;
 

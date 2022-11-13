@@ -1,7 +1,7 @@
 databaseChangeLog:
   - objectQuotingStrategy: QUOTE_ALL_OBJECTS
   - changeSet:
-      id: data/role/create-role
+      id: data/role/create-role-admin
       author: kvasov_andrey
       changes:
         - insert:
@@ -9,4 +9,14 @@ databaseChangeLog:
               - column:
                   name: name
                   value: ADMIN
+            tableName: user_role
+  - changeSet:
+      id: data/role/create-role-user
+      author: kvasov_andrey
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: name
+                  value: USER
             tableName: user_role

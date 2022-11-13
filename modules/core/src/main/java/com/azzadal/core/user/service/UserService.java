@@ -24,7 +24,7 @@ public class UserService {
     }
 
     public User saveUser(User user) {
-        Role userRole = roleRepository.findByName("ROLE_USER");
+        Role userRole = roleRepository.findByName("USER");
         user.setRole(userRole);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepo.save(user);
