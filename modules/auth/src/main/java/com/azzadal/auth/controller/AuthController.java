@@ -1,6 +1,7 @@
 package com.azzadal.auth.controller;
 
 import com.azzadal.auth.config.jwt.JwtProvider;
+import com.azzadal.auth.dto.mapper.AuthResponseMapper;
 import com.azzadal.auth.dto.object.AuthRequest;
 import com.azzadal.auth.dto.object.AuthResponse;
 import com.azzadal.auth.dto.object.RegistrationRequest;
@@ -27,6 +28,8 @@ public class AuthController {
     private final PasswordEncoder encoder;
     private final RoleService roleService;
 
+    private final AuthResponseMapper authResponseMapper;
+
     @PostMapping("/register")
     public String registerUser(@RequestBody @Valid RegistrationRequest registrationRequest) {
         User u = new User();
@@ -39,10 +42,9 @@ public class AuthController {
 
     @PostMapping
     public AuthResponse auth(@RequestBody AuthRequest request) {
-//        String pass = encoder.encode("admin");
-//        System.out.println(pass);
         User user = userService.findByLoginAndPassword(request.getLogin(), request.getPassword());
         String token = jwtProvider.generateToken(user.getLogin());
-        return new AuthResponse(token);
+        return authResponseMapper.toDto(token, user);
+//        return new AuthResponse(token);
     }
 }

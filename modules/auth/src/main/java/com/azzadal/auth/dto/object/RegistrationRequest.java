@@ -10,4 +10,6 @@ public class RegistrationRequest {
     private String login;
     @NotEmpty
     private String password;
+    private String fio;
+    private String telefon;
 }
