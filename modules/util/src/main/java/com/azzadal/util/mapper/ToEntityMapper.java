@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Базовый маппер в сущность.
+ *
  * @param <E> Сущность
  * @param <R> Request
  */

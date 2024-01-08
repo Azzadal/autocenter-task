@@ -1,7 +1,7 @@
 package com.azzadal.auth.config;
 
-import com.azzadal.core.user.model.User;
-import com.azzadal.core.user.service.UserService;
+import com.azzadal.right.model.User;
+import com.azzadal.right.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

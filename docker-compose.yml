@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  backend:
+    build: .
+    ports:
+      - "8443:8443"
+    depends_on:
+      - db
+
+  frontend:
+    build: ./autocenter-task-ui
+    ports:
+      - "80:80"
+
+  db:
+    build: ./docker/postgres
+    ports:
+      - "5432:5432"
+    restart: always
+    container_name: local_db
+    environment:
+      POSTGRES_USER: postgres
+      PGUSER: postgres
+      POSTGRES_PASSWORD: "1234"
+      POSTGRES_DB: autocenter

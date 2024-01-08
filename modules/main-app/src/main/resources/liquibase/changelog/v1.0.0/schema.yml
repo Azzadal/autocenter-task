@@ -40,6 +40,9 @@ databaseChangeLog:
               - column:
                   name: role_id
                   type: BIGINT
+              - column:
+                  name: fio_id
+                  type: BIGINT
             tableName: Usr
   - changeSet:
       id: schema/role/table
@@ -218,6 +221,33 @@ databaseChangeLog:
                   name: serviceType
                   type: VARCHAR(255)
             tableName: Repair_service
+  - changeSet:
+      id: schema/fio/table
+      author: kvasov_andrey
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: FIOPK
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: first_name
+                  type: VARCHAR(255)
+              - column:
+                  name: last_name
+                  type: VARCHAR(255)
+              - column:
+                  name: sur_name
+                  type: VARCHAR(255)
+              - column:
+                  name: user_id
+                  type: BIGINT
+            tableName: FIO
 ############################# связи #############################
   - changeSet:
       id: schema/user/foreign-key/fk_user_role_id
@@ -339,6 +369,34 @@ databaseChangeLog:
             baseColumnNames: user_id
             baseTableName: Repair_service
             constraintName: RSR_FK_USER_ID
+            deferrable: false
+            initiallyDeferred: false
+            referencedColumnNames: id
+            referencedTableName: Usr
+            validate: true
+            onDelete: cascade
+  - changeSet:
+      id: schema/user/foreign-key/fk_user_fio_id
+      author: kvasov_andrey
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: fio_id
+            baseTableName: Usr
+            constraintName: UR_FK_USER_FIO_ID
+            deferrable: false
+            initiallyDeferred: false
+            referencedColumnNames: id
+            referencedTableName: FIO
+            validate: true
+            onDelete: cascade
+  - changeSet:
+      id: schema/fio/foreign-key/fk_fio_user_id
+      author: kvasov_andrey
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: FIO
+            constraintName: UR_FK_FIO_USER_ID
             deferrable: false
             initiallyDeferred: false
             referencedColumnNames: id

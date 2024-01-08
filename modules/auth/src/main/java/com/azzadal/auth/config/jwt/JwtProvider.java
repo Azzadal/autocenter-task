@@ -2,7 +2,7 @@ package com.azzadal.auth.config.jwt;
 
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -12,8 +12,7 @@ import java.util.Date;
 
 @Component
 public class JwtProvider {
-    @Autowired
-    private Logger log;
+    private final Logger logger = LoggerFactory.getLogger(JwtProvider.class);
     @Value("${jwt.secret}")
     private String jwtSecret;
 
@@ -31,15 +30,15 @@ public class JwtProvider {
             Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
             return true;
         } catch (ExpiredJwtException expEx) {
-            log.error("Token expired");
+            logger.error("Token expired");
         } catch (UnsupportedJwtException unsEx) {
-            log.error("Unsupported jwt");
+            logger.error("Unsupported jwt");
         } catch (MalformedJwtException mjEx) {
-            log.error("Malformed jwt");
+            logger.error("Malformed jwt");
         } catch (SignatureException sEx) {
-            log.error("Invalid signature");
+            logger.error("Invalid signature");
         } catch (Exception e) {
-            log.error("invalid token");
+            logger.error("invalid token");
         }
         return false;
     }
