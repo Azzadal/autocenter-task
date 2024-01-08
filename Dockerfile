@@ -6,6 +6,7 @@ COPY bom bom
 COPY modules modules
 COPY mvnw mvnw
 COPY pom.xml pom.xml
+RUN chmod 777 ./mvnw
 RUN ./mvnw package
 
 ENTRYPOINT ["java","-jar","/opt/app/modules/main-app/target/main-app-1.0.0.jar"]
