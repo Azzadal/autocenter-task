@@ -1,5 +1,5 @@
 FROM openjdk:11-slim as builder
-EXPOSE 10100
+EXPOSE 8443
 WORKDIR /opt/app
 COPY .mvn .mvn
 COPY bom bom
