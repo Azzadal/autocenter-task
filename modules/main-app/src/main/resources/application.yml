@@ -13,9 +13,9 @@ server:
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    username: postgres
-    password: 1234
-    url: jdbc:postgresql://localhost:5432/autocenter
+    username: azzadal
+    password: brZ72z9NqcPT5yjNqhrBnKcKE98gCe3R
+    url: jdbc:postgresql://dpg-cmmuohi1hbls73ci9fo0-a.frankfurt-postgres.render.com:5432/autocenter
   liquibase:
     change-log: classpath:liquibase/changelog/master.yml
     enabled: true

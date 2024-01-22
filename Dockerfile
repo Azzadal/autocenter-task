@@ -43,13 +43,6 @@ COPY pom.xml pom.xml
 RUN chmod 777 ./mvnw
 RUN ./mvnw package
 
-COPY docker-compose.yml .
-RUN dockerd
-# RUN docker-compose -p "my" up -d --build --force-recreate
 
 ENTRYPOINT ["java","-jar","/opt/app/modules/main-app/target/main-app-1.0.0.jar"]
 
-#FROM openjdk:11-slim
-#ARG JAR_FILE=/opt/app/modules/main-app/target/*.jar
-#COPY --from=builder ${JAR_FILE} app.jar
-#ENTRYPOINT ["java","-jar","/app.jar"]
