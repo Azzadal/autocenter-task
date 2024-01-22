@@ -43,6 +43,8 @@ COPY pom.xml pom.xml
 RUN chmod 777 ./mvnw
 RUN ./mvnw package
 
+EXPOSE 8443
+
 
 ENTRYPOINT ["java","-jar","/opt/app/modules/main-app/target/main-app-1.0.0.jar"]
 
